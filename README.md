@@ -4,7 +4,7 @@ This is a completed trade notifier for OTB that gives you the value (from rolimo
 # How to setup (Windows)
 Requirements: 
 Node.js (https://nodejs.org/en/download/)
-
+**Important: CTN will only work with ROBLOSECURITY, login info is not supported**
 1. Download and extract this repository
 2. Open command prompt in the directory where you extracted CTN and type `npm i` then wait for all the modules to install
 3. Edit the settings file with your Discord Webhook
