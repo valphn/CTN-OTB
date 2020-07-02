@@ -21,17 +21,10 @@ var getFromBetween = {
         this.string = this.string.replace(removal, "");
     },
     getAllResults: function (sub1, sub2) {
-        // first check to see if we do have both substrings
         if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) return;
-
-        // find one result
         var result = this.getFromBetween(sub1, sub2);
-        // push it to the results array
         this.results.push(result);
-        // remove the most recently found one from the string
         this.removeFromBetween(sub1, sub2);
-
-        // if there's more substrings
         if (this.string.indexOf(sub1) > -1 && this.string.indexOf(sub2) > -1) {
             this.getAllResults(sub1, sub2);
         }
@@ -105,7 +98,6 @@ function loopFunction() {
                         var partnerAssetsArray = {}
                         var tradePartnerID = body["user"]["id"]
                         var userOffer = body.offers[0].userAssets
-                        var gUserID = body.offers[0].user.id
                         var partnerOffer = body.offers[1].userAssets
                         userOffer.forEach(function (item) {
                             var AssetID = item["assetId"]
@@ -123,7 +115,8 @@ function loopFunction() {
 
                         var rolimonOptions = {
                             url: "https://www.rolimons.com/itemapi/itemdetails",
-                            method: 'GET',
+                            method: '
+                            ET',
                             headers: roliHeaders,
                             json: true
                         }
