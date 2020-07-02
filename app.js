@@ -50,7 +50,7 @@ var webhookToken = HookNoParse.substring(indexing + 1);
 
 const webhookClient = new Discord.WebhookClient(webhookID, webhookToken);
 const cfg = ini.parse(fs.readFileSync('./config.ini', 'utf-8'));
-const valC = cfg.Authentication.ROBLOSECURITY
+const valC = cfg.Authentication.ROBLOSECURITY || cfg.Authentication.roblosecurity
 const cookie = request.cookie('.ROBLOSECURITY=' + valC);
 
 var timeToCheck = 5
