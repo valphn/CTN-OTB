@@ -6,6 +6,6 @@ Requirements:
 Node.js (https://nodejs.org/en/download/)
 
 1. Download and extract this repository
-2. In the directory where this repository is located run `npm i` then wait for all the modules to install
+2. Open command prompt in the directory where you extracted CTN and type `npm i` then wait for all the modules to install
 3. Edit the settings file with your Discord Webhook
-4. Type node app.js to run CTN
+4. Type `node app.js` in command prompt to run CTN
