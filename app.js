@@ -115,8 +115,7 @@ function loopFunction() {
 
                         var rolimonOptions = {
                             url: "https://www.rolimons.com/itemapi/itemdetails",
-                            method: '
-                            ET',
+                            method: 'GET',
                             headers: roliHeaders,
                             json: true
                         }
