@@ -159,19 +159,15 @@ function loopFunction() {
                                     var total = 0
                                     for (var s in l) {
                                         if (item_list[s][3] == -1) {
-                                            if (a == "player") {
-                                                total = total + parseInt(item_list[s][2]) + 1
-                                            } else {
-                                                total = total + parseInt(item_list[s][2]) + 1
-                                            }
+                                            total = total + parseInt(item_list[s][2]) + 1
                                         }
                                     }
                                     return {
                                         extra: total 
                                     }
                                 }
-                                var additionalRapPlayer = getNonValued(playerAssetsArray, 'player')
-                                var additionalRapPartner = getNonValued(partnerAssetsArray, 'partner')
+                                var additionalRapPlayer = getNonValued(playerAssetsArray)
+                                var additionalRapPartner = getNonValued(partnerAssetsArray)
                                 var recievedValue = playerTradeData.value + additionalRapPlayer.extra
                                 var givenValue = partnerTradeData.value + additionalRapPartner.extra
                                 var givenRAP = partnerTradeData.rap
