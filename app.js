@@ -189,7 +189,7 @@ function loopFunction() {
                                         "url": "https://web.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&Format=Png&userid=" + tradePartnerID
                                     },
                                     "author": {
-                                        "name": "CTN",
+                                        "name": "CTN (Open Source)",
                                         "icon_url": "https://media.giphy.com/media/cL4VwGyAEP76FQV4vs/giphy.gif"
                                     },
                                     "fields": [
