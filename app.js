@@ -94,6 +94,7 @@ function loopFunction() {
                     json: true
                 }
 
+
                 request(tradeInfoOptions, function (error, response, body) {
                     if (!error && response.statusCode === 200) {
                         var playerAssetsArray = {}
@@ -104,15 +105,22 @@ function loopFunction() {
                         userOffer.forEach(function (item) {
                             var AssetID = item["assetId"]
                             var UAID = item["id"]
-
-                            playerAssetsArray[AssetID] = [UAID] 
+                            if (playerAssetsArray[AssetID] !== undefined) {
+                                playerAssetsArray[AssetID].push(UAID)
+                            } else {
+                                playerAssetsArray[AssetID] = [UAID]
+                            }
                         });
 
                         partnerOffer.forEach(function (item) {
                             var AssetID = item["assetId"]
                             var UAID = item["id"]
+                            if (partnerAssetsArray[AssetID] !== undefined) {
+                                partnerAssetsArray[AssetID].push(UAID)
+                            } else {
+                                partnerAssetsArray[AssetID] = [UAID]
 
-                            partnerAssetsArray[AssetID] = [UAID]
+                            }
                         });
 
                         var rolimonOptions = {
@@ -145,61 +153,71 @@ function loopFunction() {
                                 }
                                 var playerTradeData = calc(playerAssetsArray)
                                 var partnerTradeData = calc(partnerAssetsArray)
-                                var givenValue = playerTradeData.value
-                                var recievedValue = partnerTradeData.value
 
-                                if (givenValue <= 0) {
-                                    givenValue = 0
-                                }
 
-                                if (recievedValue <= 0) {
-                                    recievedValue = 0
-                                }
-
-                                var givenRAP = playerTradeData.rap
-                                var recievedRAP = partnerTradeData.rap
-                                const embed = {
-                                "title": "Trade Completed",
-                                "description": "A New trade has been completed!",
-                                "url": "https://www.roblox.com/trades",
-                                "color": 15101036,
-                                "timestamp": new Date(),
-                                "footer": {
-                                    "text": "Dev: Chrrxs"
-                                },
-                                "thumbnail": {
-                                    "url": "https://web.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&Format=Png&userid=" + tradePartnerID
-                                },
-                                "author": {
-                                    "name": "CTN",
-                                    "icon_url": "https://media.giphy.com/media/cL4VwGyAEP76FQV4vs/giphy.gif"
-                                },
-                                "fields": [
-                                    {
-                                        "name": "Trade Partner",
-                                        "value": tradePartner
-                                    },
-                                    {
-                                        "name": "Value Given",
-                                        "value": givenValue,
-                                        "inline": false
-                                    },
-                                    {
-                                        "name": "Value Recieved",
-                                        "value": recievedValue,
-                                        "inline": false
-                                    },
-                                    {
-                                        "name": "Rap Given",
-                                        "value": givenRAP,
-                                        "inline": true
-                                    },
-                                    {
-                                        "name": "Rap Recieved",
-                                        "value": recievedRAP,
-                                        "inline": true
+                                function getNonValued(l, a) {
+                                    var total = 0
+                                    for (var s in l) {
+                                        if (item_list[s][3] == -1) {
+                                            if (a == "player") {
+                                                total = total + parseInt(item_list[s][2]) + 1
+                                            } else {
+                                                total = total + parseInt(item_list[s][2]) + 1
+                                            }
+                                        }
                                     }
-                                ]
+                                    return {
+                                        extra: total 
+                                    }
+                                }
+                                var additionalRapPlayer = getNonValued(playerAssetsArray, 'player')
+                                var additionalRapPartner = getNonValued(partnerAssetsArray, 'partner')
+                                var recievedValue = playerTradeData.value + additionalRapPlayer.extra
+                                var givenValue = partnerTradeData.value + additionalRapPartner.extra
+                                var givenRAP = partnerTradeData.rap
+                                var recievedRAP = playerTradeData.rap
+                                const embed = {
+                                    "title": "Trade Completed",
+                                    "description": "A New trade has been completed!",
+                                    "url": "https://www.roblox.com/trades",
+                                    "color": 15101036,
+                                    "timestamp": new Date(),
+                                    "footer": {
+                                        "text": "Dev: Chrrxs"
+                                    },
+                                    "thumbnail": {
+                                        "url": "https://web.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&Format=Png&userid=" + tradePartnerID
+                                    },
+                                    "author": {
+                                        "name": "CTN",
+                                        "icon_url": "https://media.giphy.com/media/cL4VwGyAEP76FQV4vs/giphy.gif"
+                                    },
+                                    "fields": [
+                                        {
+                                            "name": "Trade Partner",
+                                            "value": tradePartner
+                                        },
+                                        {
+                                            "name": "Value Given",
+                                            "value": givenValue,
+                                            "inline": false
+                                        },
+                                        {
+                                            "name": "Value Recieved",
+                                            "value": recievedValue,
+                                            "inline": false
+                                        },
+                                        {
+                                            "name": "Rap Given",
+                                            "value": givenRAP,
+                                            "inline": true
+                                        },
+                                        {
+                                            "name": "Rap Recieved",
+                                            "value": recievedRAP,
+                                            "inline": true
+                                        }
+                                    ]
                                 };
 
                                 webhookClient.send({
@@ -218,7 +236,7 @@ function loopFunction() {
                     }
                 });
 
-                fs.writeFile("./CTNrecentTradeID.txt", tradeID, (err) => { 
+                fs.writeFile("./CTNrecentTradeID.txt", tradeID, (err) => {
                     //ERROR FIX: If you get an error saying invalid arg type try changing 'tradeID' to 'tradeID.toString()`
                     if (err) console.log(err);
                 });
@@ -226,7 +244,7 @@ function loopFunction() {
         } else {
             console.log(body)
         }
-            });
+    });
     robloxTradeData.on('error', function (err) {
         console.log("ERROR: Cookie Invalid - Roblox Declined the request")
     });
