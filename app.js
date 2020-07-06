@@ -236,7 +236,7 @@ function loopFunction() {
                     }
                 });
 
-                fs.writeFile("./CTNrecentTradeID.txt", tradeID, (err) => {
+                fs.writeFile("./CTNrecentTradeID.txt", tradeID.toString(), (err) => {
                     //ERROR FIX: If you get an error saying invalid arg type try changing 'tradeID' to 'tradeID.toString()`
                     if (err) console.log(err);
                 });
