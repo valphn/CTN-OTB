@@ -195,22 +195,22 @@ function loopFunction() {
                                         },
                                         {
                                             "name": "Value Given",
-                                            "value": givenValue,
-                                            "inline": false
-                                        },
-                                        {
-                                            "name": "Value Recieved",
                                             "value": recievedValue,
                                             "inline": false
                                         },
                                         {
+                                            "name": "Value Recieved",
+                                            "value": givenValue,
+                                            "inline": false
+                                        },
+                                        {
                                             "name": "Rap Given",
-                                            "value": givenRAP,
+                                            "value": recievedRAP,
                                             "inline": true
                                         },
                                         {
                                             "name": "Rap Recieved",
-                                            "value": recievedRAP,
+                                            "value": givenRAP,
                                             "inline": true
                                         }
                                     ]
