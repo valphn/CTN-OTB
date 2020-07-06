@@ -85,6 +85,7 @@ function loopFunction() {
         if (!error && response.statusCode === 200) {
             tradeID = body["data"][0].id
             tradePartner = body["data"][0].user.name
+
             if (tradeID != currentID) {
 
                 var tradeInfoOptions = {
@@ -151,11 +152,7 @@ function loopFunction() {
                                         num_limiteds: e
                                     }
                                 }
-                                var playerTradeData = calc(playerAssetsArray)
-                                var partnerTradeData = calc(partnerAssetsArray)
-
-
-                                function getNonValued(l, a) {
+                                function getNonValued(l) {
                                     var total = 0
                                     for (var s in l) {
                                         if (item_list[s][3] == -1) {
@@ -163,15 +160,22 @@ function loopFunction() {
                                         }
                                     }
                                     return {
-                                        extra: total 
+                                        extra: total
                                     }
                                 }
+
+                                var playerTradeData = calc(playerAssetsArray)
+                                var partnerTradeData = calc(partnerAssetsArray)
                                 var additionalRapPlayer = getNonValued(playerAssetsArray)
                                 var additionalRapPartner = getNonValued(partnerAssetsArray)
-                                var recievedValue = playerTradeData.value + additionalRapPlayer.extra
-                                var givenValue = partnerTradeData.value + additionalRapPartner.extra
-                                var givenRAP = partnerTradeData.rap
-                                var recievedRAP = playerTradeData.rap
+
+                                var recievedValue = partnerTradeData.value + additionalRapPartner.extra
+
+                                var givenValue = playerTradeData.value + additionalRapPlayer.extra
+
+                                var givenRAP = playerTradeData.rap
+                                var recievedRAP = partnerTradeData.rap
+
                                 const embed = {
                                     "title": "Trade Completed",
                                     "description": "A New trade has been completed!",
