@@ -101,8 +101,8 @@ function loopFunction() {
                         var playerAssetsArray = {}
                         var partnerAssetsArray = {}
                         var tradePartnerID = body["user"]["id"]
-                        var userOffer = body.offers[0].userAssets
-                        var partnerOffer = body.offers[1].userAssets
+                        var userOffer = body.offers[1].userAssets
+                        var partnerOffer = body.offers[0].userAssets
                         userOffer.forEach(function (item) {
                             var AssetID = item["assetId"]
                             var UAID = item["id"]
