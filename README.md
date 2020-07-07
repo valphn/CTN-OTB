@@ -1,4 +1,4 @@
-> This is a modified version of the CTN that Chrrxs has made, this tutorial should work for his version aswell.
+> This is a modified version of the CTN for my personal use, this tutorial should work for his version aswell.
 
 # Linux Installation
 Requirements:
