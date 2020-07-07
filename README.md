@@ -1,3 +1,5 @@
+> This is a modified version of the CTN that Chrrxs has made, this tutorial should work for his version aswell.
+
 # Linux Installation
 Requirements:
 * Linux VPS running Ubuntu 26.04 with OTB already running
