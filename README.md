@@ -3,7 +3,7 @@ Requirements:
 * Linux VPS running Ubuntu 26.04 with OTB already running
 * [Filezilla](https://filezilla-project.org/download.php?type=client#close) to transfer your files to your VPS
 
-## [Part 1] Installing [Node.js](https://nodejs.org/en/) with Apt Using a NodeSource PPA**
+## [Part 1] Installing [Node.js](https://nodejs.org/en/) with Apt Using a NodeSource PPA
 
 First, we will install the PPA in order to get access to its packages. From your home directory, use curl to retrieve the installation script for your preferred version, making sure to replace 14.x with your preferred version string (Keep the same if you want to install the latest version).
 ```
@@ -63,7 +63,7 @@ FileZilla will now try to connect to the server. If all works well, you will not
 
 Then, you can drag all the contents of the `CTN-OTB-master` into the `bin3` folder.
 
-## [Part 3] Running CTN**
+## [Part 3] Running CTN
 Go back to your linux terminal and go to the `bin3` directory:
 ```
 cd bin3
