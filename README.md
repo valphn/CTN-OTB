@@ -42,7 +42,7 @@ You also need to install Discord.js by using this command:
 npm install discord.js
 ```
 
-## [Part 2] How to Transfer Files using [Filezilla](https://filezilla-project.org/download.php?type=client#close)**
+## [Part 2] How to Transfer Files using [Filezilla](https://filezilla-project.org/download.php?type=client#close)
 
 The first thing to do is connecting to a server.
 This is our (fictional) login data based on Vultr - please use your own data instead if you want to actively follow the tutorial.
