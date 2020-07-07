@@ -178,7 +178,6 @@ function loopFunction() {
 
                                 const embed = {
                                     "title": "Trade Completed",
-                                    "description": "A New trade has been completed!",
                                     "url": "https://www.roblox.com/trades",
                                     "color": 15101036,
                                     "timestamp": new Date(),
@@ -190,7 +189,7 @@ function loopFunction() {
                                     },
                                     "author": {
                                         "name": "CTN (Open Source)",
-                                        "icon_url": "https://media.giphy.com/media/cL4VwGyAEP76FQV4vs/giphy.gif"
+                                        "icon_url": "https://img.icons8.com/cotton/2x/checkmark.png"
                                     },
                                     "fields": [
                                         {
@@ -221,8 +220,8 @@ function loopFunction() {
                                 };
 
                                 webhookClient.send({
-                                    username: 'CTN Open Source',
-                                    avatarURL: 'https://media3.giphy.com/media/1QcqLUCuQca1edQ0rK/giphy.gif',
+                                    username: 'Trade Notifier',
+                                    avatarURL: 'https://tr.rbxcdn.com/34a1c42bb0265048b32998a9ec040fc0/420/420/Decal/Png',
                                     content: config.mention,
                                     embeds: [embed],
                                 });
